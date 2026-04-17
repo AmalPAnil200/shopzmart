@@ -269,7 +269,7 @@ export default function HomePage() {
               View All <ArrowRight size={14} />
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {featured.map(p => <ProductCard key={p.id} product={p} />)}
           </div>
         </div>
@@ -315,7 +315,7 @@ export default function HomePage() {
               See All New <ArrowRight size={14} />
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {products.filter(p => p.tag === 'new' || p.tag === 'hot').slice(0, 4).map(p => (
               <ProductCard key={p.id} product={p} />
             ))}
