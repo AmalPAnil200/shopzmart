@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════
+   TAILWIND v4 THEME
+════════════════════════════════════════════ */
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --shadow-blue: 0 4px 20px rgba(37, 99, 235, 0.25);
+  --shadow-soft: 0 2px 8px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* ════════════════════════════════════════════
+   BASE LAYER
+════════════════════════════════════════════ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  img { max-width: 100%; display: block; }
+  a   { text-decoration: none; color: inherit; }
+  button { cursor: pointer; font-family: inherit; }
+  input, textarea, select { font-family: inherit; }
+}
+
+/* ════════════════════════════════════════════
+   COMPONENT CLASSES (reusable patterns)
+════════════════════════════════════════════ */
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+  height: 46px;
+  border-radius: 0.875rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.btn-sm   { height: 36px; padding: 0 1rem; font-size: 0.82rem; border-radius: 0.625rem; }
+.btn-lg   { height: 54px; padding: 0 2rem; font-size: 1rem; }
+.btn-xl   { height: 62px; padding: 0 2.5rem; font-size: 1.05rem; border-radius: 1.25rem; }
+.btn-full { width: 100%; }
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  box-shadow: var(--shadow-blue);
+}
+.btn-primary:hover {
+  background: #1d4ed8;
+  box-shadow: 0 6px 28px rgba(37,99,235,0.35);
+  transform: translateY(-1px);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-accent { background: #facc15; color: #0f172a; }
+.btn-accent:hover {
+  background: #eab308;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(234,179,8,0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #2563eb;
+  border: 2px solid #2563eb;
+}
+.btn-outline:hover {
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #475569;
+  border: 1.5px solid #e2e8f0;
+}
+.btn-ghost:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}
+
+.btn-danger { background: #ef4444; color: white; }
+.btn-danger:hover { background: #dc2626; }
+
+/* ── Form Inputs ── */
+.form-input {
+  height: 46px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 0.625rem;
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  color: #1e293b;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+}
+.form-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+.form-input.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.1);
+}
+.form-input.success {
+  border-color: #10b981;
+}
+
+/* ── Tags ── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.tag-sale { background: #ef4444; color: white; }
+.tag-new  { background: #2563eb; color: white; }
+.tag-hot  { background: #facc15; color: #0f172a; }
+
+/* ── Order Status Badges ── */
+.order-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.order-status.delivered  { background: rgba(16,185,129,0.1); color: #10b981; }
+.order-status.processing { background: rgba(37,99,235,0.1);  color: #2563eb; }
+.order-status.shipped    { background: rgba(234,179,8,0.15); color: #ca8a04; }
+.order-status.cancelled  { background: rgba(239,68,68,0.1);  color: #ef4444; }
+
+/* ════════════════════════════════════════════
+   KEYFRAME ANIMATIONS
+════════════════════════════════════════════ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.animate-fade-up { animation: fadeInUp 0.5s ease both; }
+.animate-fade-up-delay-1 { animation-delay: 0.1s; }
+.animate-fade-up-delay-2 { animation-delay: 0.2s; }
+
+/* ════════════════════════════════════════════
+   CATEGORY BENTO GRID (nth-child selectors)
+════════════════════════════════════════════ */
+.cat-card-wrap:nth-child(-n+2) {
+  grid-row: span 2;
+}
+.cat-card-wrap:nth-child(-n+2) .cat-card {
+  min-height: 420px;
+}
+/* Radial light pseudo on every cat-card */
+.cat-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.12) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .cat-card-wrap:nth-child(-n+2) { grid-row: span 1; }
+  .cat-card-wrap:nth-child(-n+2) .cat-card { min-height: 240px; }
+}
+@media (max-width: 768px) {
+  .cat-card { min-height: 180px !important; }
+}
+@media (max-width: 480px) {
+  .cat-card { min-height: 160px !important; }
+}
